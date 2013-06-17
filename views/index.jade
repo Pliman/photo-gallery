@@ -1,0 +1,28 @@
+extends layout
+
+block content
+	div.navbar
+		div.navbar-inner
+			a.brand(href="#") Quick Start
+			ul.nav
+				li
+					a(href="#") Home
+				li
+					a(href="#/route1") Route 1
+				li
+					a(href="#/route2") Route 2
+
+	div.row
+		div.span6
+			div.well(ui-view="viewA")
+			div.well(ui-view="viewB")
+	//
+		ul.menu
+			li
+				a(href="#/view1") view1
+				a(href="#/view2") view2
+		div(ng-view)
+	//
+		div(ui-view="header")
+		div.photoGallery photoGallery
+		div(ui-view="footer")
