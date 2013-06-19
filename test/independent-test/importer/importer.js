@@ -1,4 +1,4 @@
-var IMPORT_DIR = 'D:/photo-gallery/uploads/';
+var IMPORT_DIR = 'D:/photo-gallery/public/uploads/';
 var ALBUM_NAME = '银厂沟';
 
 //----------------------------------------------------------------
@@ -20,7 +20,7 @@ fs.readdir(IMPORT_DIR, function (err, files) {
 				var obj = {};
 				obj.name = file;
 				obj.albumName = ALBUM_NAME;
-				obj.uploadTime = new Date();
+				obj.uploadTime = new Date().getTime();
 
 				obj.camera = exifData.image.Make;
 				obj.model = exifData.image.Model;

@@ -11,6 +11,9 @@ angular.module('myApp', ['ui.state', 'myApp.filters', 'myApp.services', 'myApp.d
 					"header": {
 						templateUrl: "partials/header.html"
 					},
+					"content": {
+						templateUrl: "partials/content.html"
+					},
 					"footer": {
 						templateUrl: "partials/footer.html"
 					}
