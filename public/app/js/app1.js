@@ -19,29 +19,20 @@ angular.module('myApp', ['ui.state', 'myApp.filters', 'myApp.services', 'myApp.d
 					}
 				}
 			})
-			.state('view1', {
-				url: "/route1",
+			.state('nagvigator', {
+				url: "/navigator",
 				views: {
 					"header": {
 						templateUrl: "partials/header.html"
+					},
+					"content": {
+						templateUrl: "partials/navigator.html"
 					},
 					"footer": {
 						templateUrl: "partials/footer.html"
 					}
 				}
 			})
-			.state('view2', {
-				url: "/route2",
-				views: {
-					"header": {
-						templateUrl: "partials/header.html"
-					},
-					"footer": {
-						templateUrl: "partials/footer.html"
-					}
-				}
-			})
-
 		// configure html5 to get links working on jsfiddle
 		//$locationProvider.html5Mode(true);
 	}]);

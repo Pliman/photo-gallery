@@ -2,13 +2,13 @@
 2. express,jade
 3. mongodb
 
-×é¼ş£º
+ç»„ä»¶ï¼š
 angularjs(ui route + html5Mode)
 bootstrap + flat UI
 requirejs?
 node-exif
 
-Êı¾İ½á¹¹£º
+æ•°æ®ç»“æ„ï¼š
 1. album
 {
 	"name": "",
