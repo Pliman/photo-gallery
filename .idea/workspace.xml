@@ -33,10 +33,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="importer.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="importer.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/independent-test/importer/importer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="21" selection-start="64" selection-end="67" vertical-scroll-proportion="0.020547945">
+            <state line="24" column="43" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conf.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/etc/conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="30" selection-start="406" selection-end="419" vertical-scroll-proportion="0.4520548">
               <folding />
             </state>
           </provider>
@@ -76,7 +85,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -123,15 +132,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="independent-test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="importer" />
+              <option name="myItemId" value="etc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -142,6 +143,31 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
+  </component>
+  <component name="PublishConfig">
+    <servers>
+      <server id="472f4821-48dc-47cc-8ac3-2cc7c342c376">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="8bd02017-bfd4-4fd4-881d-931f0bb8e32b">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+      <server id="c9613e75-a47e-48ca-8a20-6bcec966c44a">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </server>
+    </servers>
   </component>
   <component name="RunManager">
     <list size="0" />
@@ -241,7 +267,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test/independent-test/importer/importer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="21" selection-start="64" selection-end="67" vertical-scroll-proportion="0.020547945">
+        <state line="24" column="43" selection-start="686" selection-end="686" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/etc/conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="30" selection-start="406" selection-end="419" vertical-scroll-proportion="0.4520548">
           <folding />
         </state>
       </provider>
