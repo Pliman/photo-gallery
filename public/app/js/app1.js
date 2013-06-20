@@ -33,6 +33,14 @@ angular.module('myApp', ['ui.state', 'myApp.filters', 'myApp.services', 'myApp.d
 					}
 				}
 			})
+			.state('nagvigator.exif', {
+				url: "/exif",
+				views: {
+					"exif": {
+						templateUrl: "partials/exif.html"
+					}
+				}
+			})
 		// configure html5 to get links working on jsfiddle
 		//$locationProvider.html5Mode(true);
 	}]);
