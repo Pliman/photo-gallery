@@ -32,7 +32,7 @@
 /*-----------------photoviewer start-----------------*/
 .photoviewer {
 	position: relative;
-	width: 98%;
+	width: 100%;
 	min-height: 500px;
 	line-height: 475px;
 	text-align: center;
@@ -43,8 +43,7 @@
 	/*background-color: #dfdae1;
 	opacity: 0.2;*/
 	position: absolute;
-	left: 50%;
-	cursor:url('');
+	cursor:url("../img/arrow-blue-left.png"), pointer;
 }
 .next {
 	width: 50%;
@@ -52,6 +51,7 @@
 	/*background-color: #a6a6a3;
 	opacity: 0.2;*/
 	position: absolute;
-	cursor:url('');
+	cursor:url('../img/arrow-blue-right.png'), pointer;
+	left: 50%;
 }
 /*-----------------photoviewer end-----------------*/
