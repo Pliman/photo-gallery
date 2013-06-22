@@ -3,7 +3,6 @@
  */
 
 var express = require('express')
-	, routes = require('./routes')
 	, http = require('http')
 	, path = require('path');
 
@@ -25,8 +24,10 @@ if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
 
-app.get('/', routes.index);
+// dispatch routes
+var dispatcher = require("./dispatcher");
+dispatcher.dispatch(app);
 
-http.createServer(app).listen(app.get('port'), function () {
-	console.log('Express server listening on port ' + app.get('port'));
+http.createServer(app).listen(process.env.PORT || 3000, function() {
+	console.log("Photo gallery listening on port %d in %s mode", process.env.PORT || 3000, app.settings.env);
 });
