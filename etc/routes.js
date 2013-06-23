@@ -26,5 +26,36 @@ module.exports = [
 		"path": "./lib/index/index.js",
 		"objName": "index",
 		"method": "get"
+	},
+	// album
+	// 1. get/get-xhr /albums get all album
+	// 2. get/get-xhr /album/:name/photos get all photos in album
+	{
+		"url": "/albums",
+		"path": "./lib/album/album-controller.js",
+		"objName": "getAllAlbums",
+		"method": "get"
+	},
+	{
+		"url": "/album/:albumName/photos",
+		"path": "./lib/album/album-controller.js",
+		"objName": "getPhotosByAlbum",
+		"method": "get"
+	},
+	// photo
+	// 1. get/get-xhr /photos get all photos
+	// 2. get/get-xhr /photo/:photoName get photo by name
+	// 2. get/get-xhr /photos/:skip/:limit get photo by pagination
+	{
+		"url": "/photos",
+		"path": "./lib/photo/photo-controller.js",
+		"objName": "getAllPhotos",
+		"method": "get"
+	},
+	{
+		"url": "/photos/:skip/:limit",
+		"path": "./lib/photo/photo-controller.js",
+		"objName": "getPhotoByPagination",
+		"method": "get"
 	}
 ];
