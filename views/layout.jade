@@ -1,18 +1,19 @@
 doctype 5
-html(ng-app="myApp")
+html(lang="en", ng-app="myApp")
 	head
-		title= title
+		title Photo Gallery
+		link(rel="stylesheet", href="app/css/bootstrap.min.css")
+		link(rel="stylesheet", href="app/css/flat-ui.css")
 		link(rel="stylesheet", href="app/css/app.css")
-		link(rel="stylesheet", href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css")
-	body.container
+	body
 		block content
+
 	script(src="app/lib/angular/angular.js")
 	script(src="app/lib/jquery/jquery-1.10.1.js")
 	script(src="app/lib/bootstrap/bootstrap.js")
 	script(src="app/lib/angular/angular-ui-router.js")
-
-	script(src="app/js/app1.js");
-	script(src="app/js/services.js");
-	script(src="app/js/controllers.js");
-	script(src="app/js/filters.js");
-	script(src="app/js/directives.js");
+	script(src="app/js/app.js")
+	script(src="app/js/services.js")
+	script(src="app/js/controllers.js")
+	script(src="app/js/filters.js")
+	script(src="app/js/directives.js")

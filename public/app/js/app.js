@@ -9,13 +9,13 @@ angular.module('myApp', ['ui.state', 'myApp.filters', 'myApp.services', 'myApp.d
 				url: "", // root route
 				views: {
 					"header": {
-						templateUrl: "partials/header.html"
+						templateUrl: "app/partials/header.html"
 					},
 					"content": {
-						templateUrl: "partials/content.html"
+						templateUrl: "app/partials/content.html"
 					},
 					"footer": {
-						templateUrl: "partials/footer.html"
+						templateUrl: "app/partials/footer.html"
 					}
 				}
 			})
@@ -23,13 +23,13 @@ angular.module('myApp', ['ui.state', 'myApp.filters', 'myApp.services', 'myApp.d
 				url: "/navigator",
 				views: {
 					"header": {
-						templateUrl: "partials/header.html"
+						templateUrl: "app/partials/header.html"
 					},
 					"content": {
-						templateUrl: "partials/navigator.html"
+						templateUrl: "app/partials/navigator.html"
 					},
 					"footer": {
-						templateUrl: "partials/footer.html"
+						templateUrl: "app/partials/footer.html"
 					}
 				}
 			})
@@ -37,7 +37,7 @@ angular.module('myApp', ['ui.state', 'myApp.filters', 'myApp.services', 'myApp.d
 				url: "/exif",
 				views: {
 					"exif": {
-						templateUrl: "partials/exif.html"
+						templateUrl: "app/partials/exif.html"
 					}
 				}
 			})
