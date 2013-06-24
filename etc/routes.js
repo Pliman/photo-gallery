@@ -9,7 +9,7 @@
  * route配置示例：
  * <pre>
  * {
- * "url" : "/crawler", // 监听地址
+ * "url" : ["/crawler", "/crawler/del"], // 监听地址，可以是数组，将数组中的url都绑定到controller进行处理，主要是为了pushstate直接访问方便
  * "path" : "./src/crawler/crawler.js", // 处理模块
  * "objName" : "listCrawler", // 处理方法
  * "method" : "get", // 监听请求类型
@@ -47,7 +47,7 @@ module.exports = [
 	// 2. get/get-xhr /photo/:photoName get photo by name
 	// 2. get/get-xhr /photos/:skip/:limit get photo by pagination
 	{
-		"url": "/photos",
+		"url": ["/photos", "/photos/a"],
 		"path": "./lib/photo/photo-controller.js",
 		"objName": "getAllPhotos",
 		"method": "get"
