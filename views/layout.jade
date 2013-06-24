@@ -1,5 +1,5 @@
 doctype 5
-html(lang="en", ng-app="myApp")
+html
 	head
 		title Photo Gallery
 		link(rel="stylesheet", href="app/css/bootstrap.min.css")
@@ -8,12 +8,4 @@ html(lang="en", ng-app="myApp")
 	body
 		block content
 
-	script(src="app/lib/angular/angular.js")
-	script(src="app/lib/jquery/jquery-1.10.1.js")
-	script(src="app/lib/bootstrap/bootstrap.js")
-	script(src="app/lib/angular/angular-ui-router.js")
-	script(src="app/js/app.js")
-	script(src="app/js/services.js")
-	script(src="app/js/controllers.js")
-	script(src="app/js/filters.js")
-	script(src="app/js/directives.js")
+	script(src="app/lib/require/require.js", data-main="js/main.js")

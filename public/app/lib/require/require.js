@@ -1,3 +1,28 @@
+var require = {
+	baseUrl: '/app',
+	paths: {
+		angular: 'lib/angular/angular',
+		jQuery: 'lib/jquery/jquery-1.10.1',
+		bootstrap: 'lib/bootstrap/bootstrap',
+		angularUiRouter: 'lib/angular/angular-ui-router',
+		underscore: 'lib/underscore/underscore'
+	},
+	shim: {
+		bootstrap: {
+			deps: ['jQuery']
+		},
+		underscore: {
+			exports: "_"
+		},
+		jQuery: {
+			exports: "jQuery"
+		},
+		angularUiRouter: {
+			deps: ['angular']
+		}
+	}
+};
+
 /** vim: et:ts=4:sw=4:sts=4
  * @license RequireJS 2.1.5 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.

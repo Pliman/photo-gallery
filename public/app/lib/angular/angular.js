@@ -1119,6 +1119,7 @@ function setupModuleLoader(window) {
       if (requires && modules.hasOwnProperty(name)) {
         modules[name] = null;
       }
+	    console.log(modules);
       return ensure(modules, name, function() {
         if (!requires) {
           throw Error('No module: ' + name);
