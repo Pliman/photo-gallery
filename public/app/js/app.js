@@ -6,7 +6,7 @@ define(['jQuery', 'bootstrap', 'angular', 'angularUiRouter'], function () {
 		config(['$routeProvider', '$locationProvider', '$stateProvider', function ($routeProvider, $locationProvider, $stateProvider) {
 			$stateProvider
 				.state('index', {
-					url: "", // root route
+					url: "/", // root route
 					views: {
 						"header": {
 							templateUrl: "app/partials/header.html"
