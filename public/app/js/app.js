@@ -9,13 +9,13 @@ define(['jQuery', 'bootstrap', 'angular', 'angularUiRouter'], function () {
 					url: "/", // root route
 					views: {
 						"header": {
-							templateUrl: "app/partials/header.html"
+							templateUrl: "/app/partials/header.html"
 						},
 						"content": {
-							templateUrl: "app/partials/content.html"
+							templateUrl: "/app/partials/content.html"
 						},
 						"footer": {
-							templateUrl: "app/partials/footer.html"
+							templateUrl: "/app/partials/footer.html"
 						}
 					}
 				})
@@ -23,13 +23,13 @@ define(['jQuery', 'bootstrap', 'angular', 'angularUiRouter'], function () {
 					url: "/navigator",
 					views: {
 						"header": {
-							templateUrl: "app/partials/header.html"
+							templateUrl: "/app/partials/header.html"
 						},
 						"content": {
-							templateUrl: "app/partials/navigator.html"
+							templateUrl: "/app/partials/navigator.html"
 						},
 						"footer": {
-							templateUrl: "app/partials/footer.html"
+							templateUrl: "/app/partials/footer.html"
 						}
 					}
 				})
@@ -37,7 +37,7 @@ define(['jQuery', 'bootstrap', 'angular', 'angularUiRouter'], function () {
 					url: "/exif",
 					views: {
 						"exif": {
-							templateUrl: "app/partials/exif.html"
+							templateUrl: "/app/partials/exif.html"
 						}
 					}
 				})
