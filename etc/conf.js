@@ -20,8 +20,8 @@ module.exports = {
 		}
 	},
 	"mongoDB": {
-		//"host": "192.168.56.137",
-		"host": "10.34.135.159",
+		"host": "192.168.56.137",
+		//"host": "10.34.135.159",
 		"port": "27017",
 		"dbName": "photo-gallery",
 		"max_connection": "10",

@@ -47,7 +47,7 @@ module.exports = [
 	// 2. get/get-xhr /photo/:photoName get photo by name
 	// 2. get/get-xhr /photos/:skip/:limit get photo by pagination
 	{
-		"url": ["/photos", "/photos/a"],
+		"url": ["/photos"],
 		"path": "./lib/photo/photo-controller.js",
 		"objName": "getAllPhotos",
 		"method": "get"
