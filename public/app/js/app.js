@@ -13,7 +13,7 @@ define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], f
 						},
 						"content": {
 							templateUrl: "/app/partials/content.html",
-							controller: 'index1'
+							controller: 'index'
 						},
 						"footer": {
 							templateUrl: "/app/partials/footer.html"
@@ -21,7 +21,7 @@ define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], f
 					}
 				})
 				.state('photo', {
-					url: "/photo",
+					url: "/photo/:photoName",
 					views: {
 						"header": {
 							templateUrl: "/app/partials/header.html"
