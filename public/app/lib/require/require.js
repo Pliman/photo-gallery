@@ -17,6 +17,9 @@ var require = {
 		jQuery: {
 			exports: "jQuery"
 		},
+		angular: {
+			exports: "angular"
+		},
 		angularUiRouter: {
 			deps: ['angular']
 		}

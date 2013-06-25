@@ -1,11 +1,26 @@
 'use strict';
 
 /* Controllers */
+define(['angular', './services'], function (angular) {
+	return angular.module('photo-gallery.controllers', ['photo-gallery.services']).
+		controller('index1', ['$scope', 'version', function ($scope, version) {
+			$scope.scopedAppVersion = version;
 
-angular.module('photo-gallery.controllers', []).
-  controller('MyCtrl1', [function() {
+			$scope.photos = [
+				{ "name": "P1130053.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455093 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.004, "f": 3.2, "ISO": 80, "createTime": "2013:06:08 08:42:47", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000001" } },
+				{ "name": "P1130105.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455100 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.0025, "f": 5, "ISO": 80, "createTime": "2013:06:08 09:40:15", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000002" } },
+				{ "name": "P1130098.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455102 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.01, "f": 5, "ISO": 80, "createTime": "2013:06:08 09:38:13", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000003" } }
+			]
 
-  }])
-  .controller('MyCtrl2', [function() {
+			console.log($scope.photos);
 
-  }]);
+			alert('welcome to photo gallery!');
+		}])
+		.controller('photo', ['$scope', '$routeParams', 'photo', function ($scope, $routeParams, photo) {
+			$scope.photo = { "name": "P1130053.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455093 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.004, "f": 3.2, "ISO": 80, "createTime": "2013:06:08 08:42:47", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000001" } };
+
+			console.log($scope.photo);
+
+			alert('welcome to photo detail!');
+		}]);
+});

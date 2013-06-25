@@ -22,7 +22,7 @@
 module.exports = [
 	// index
 	{
-		"url": ["/", "/navigator", "/navigator/exif"],
+		"url": ["/", "/photo", "/photo/exif"],
 		"path": "./lib/index/index.js",
 		"objName": "index",
 		"method": "get"
