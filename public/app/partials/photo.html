@@ -3,9 +3,8 @@
 	<div class="next"></div>
 	<span class="shower" ng-switch="photo.name != null">
 		<img ng-switch-when="true" ng-src="/uploads/{{photo.name}}">
-		<!-- 当有相片时，就加载相片，如果没有，显示loading????
-		<img ng-switch-when="false" src="/uploads/features.png">
-		-->
+		<!-- 当有相片时，就加载相片，如果没有，显示loading????-->
+		<img ng-switch-when="false" src="/uploads/loding_green.gif">
 	</span>
 </div>
 
