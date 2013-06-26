@@ -1,8 +1,11 @@
 <div class="photoviewer">
 	<div class="pre"></div>
 	<div class="next"></div>
-	<span class="shower">
-		<img ng-src="/uploads/{{photo.name}}">
+	<span class="shower" ng-switch="photo.name != null">
+		<img ng-switch-when="true" ng-src="/uploads/{{photo.name}}">
+		<!-- 当有相片时，就加载相片，如果没有，显示loading????
+		<img ng-switch-when="false" src="/uploads/features.png">
+		-->
 	</span>
 </div>
 

@@ -2,6 +2,7 @@ var require = {
 	baseUrl: '/app',
 	paths: {
 		angular: 'lib/angular/angular',
+		angularResource: 'lib/angular/angular-resource',
 		jQuery: 'lib/jquery/jquery-1.10.1',
 		bootstrap: 'lib/bootstrap/bootstrap',
 		angularUiRouter: 'lib/angular/angular-ui-router',
@@ -21,6 +22,9 @@ var require = {
 			exports: "angular"
 		},
 		angularUiRouter: {
+			deps: ['angular']
+		},
+		angularResource: {
 			deps: ['angular']
 		}
 	}

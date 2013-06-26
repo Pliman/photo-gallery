@@ -12,13 +12,17 @@ define(['angular', './services'], function (angular) {
 				{ "name": "P1130098.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455102 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.01, "f": 5, "ISO": 80, "createTime": "2013:06:08 09:38:13", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000003" } }
 			]
 		}])
-		.controller('photo', ['$scope', '$stateParams', 'photo', function ($scope, $stateParams, photo) {
-			$scope.photo = { "name": "P1130053.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455093 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.004, "f": 3.2, "ISO": 80, "createTime": "2013:06:08 08:42:47", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000001" } };
+		.controller('photo', ['$scope', '$stateParams', 'Photo', function ($scope, $stateParams, Photo) {
+			Photo.get({photoName: $stateParams.photoName}, function(photo) {
+				$scope.photo = photo[0];
+				$scope.photo.exposureCompensation += ' ev';
+			});
+//			console.log(Photo.get({photoName: $stateParams.photoName}));
+			//$scope.photo = { "name": "P1130053.jpg", "albumName": "Yinchanggou", "uploadTime": { "$date": 1371516455093 }, "camera": "Panasonic", "model": "DMC-LX5", "exposure": 0.004, "f": 3.2, "ISO": 80, "createTime": "2013:06:08 08:42:47", "exposureCompensation": -0.33, "_id": { "$oid": "51bfae27238f6a2416000001" } };
+			//$scope.photo = Photo.query();
 
-			// 暂时不实现photo对象传递机制，使用写死的photo对象
-			$scope.photo.name = $stateParams.photoName;
-			$scope.photo.exposureCompensation = $scope.photo.exposureCompensation + ' ev';
-
+				// 暂时不实现photo对象传递机制，使用写死的photo对象
+			//$scope.photo.name = $stateParams.photoName;
 			$scope.exifItems = [
 				{
 					display: 'Album Name',
