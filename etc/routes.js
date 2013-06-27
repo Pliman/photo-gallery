@@ -22,7 +22,7 @@
 module.exports = [
 	// index
 	{
-		"url": ["/", "/photo", "/photo/:photoName", "/photo/:photoName/exif"],
+		"url": ["/", "/photo", "/photo/:photoName", "/photo/:photoName/exif", "/photo/:photoName/album"],
 		"path": "./lib/index/index.js",
 		"objName": "index",
 		"method": "get"
@@ -46,6 +46,10 @@ module.exports = [
 	// 1. get/get-xhr /photos get all photos
 	// 2. get/get-xhr /photo-data/:photoName get photo by name
 	// 3. get/get-xhr /photos/:skip/:limit get photo by pagination
+	// 4. get/get-xhr /photo/:photoName/pre  get previous photo
+	// 5. get/get-xhr /photo/:photoName/next get next photo
+	// 6. get/get-xhr /photo/:photoName/album/pre  get previous photo in album
+	// 7. get/get-xhr /photo/:photoName/album/next get next photo in album
 	{
 		"url": ["/photos"],
 		"path": "./lib/photo/photo-controller.js",
@@ -62,6 +66,30 @@ module.exports = [
 		"url": "/photos/:skip/:limit",
 		"path": "./lib/photo/photo-controller.js",
 		"objName": "getPhotoByPagination",
+		"method": "get"
+	},
+	{
+		"url": "/photo/:photoName/pre",
+		"path": "./lib/photo/photo-controller.js",
+		"objName": "getPhotoPre",
+		"method": "get"
+	},
+	{
+		"url": "/photo/:photoName/next",
+		"path": "./lib/photo/photo-controller.js",
+		"objName": "getPhotoNext",
+		"method": "get"
+	},
+	{
+		"url": "/photo/:photoName/album/pre",
+		"path": "./lib/photo/photo-controller.js",
+		"objName": "getAlbumPhotoPre",
+		"method": "get"
+	},
+	{
+		"url": "/photo/:photoName/album/next",
+		"path": "./lib/photo/photo-controller.js",
+		"objName": "getAlbumPhotoNext",
 		"method": "get"
 	}
 ];
