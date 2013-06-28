@@ -16,8 +16,23 @@ define(['angular', 'angularResource'], function (angular) {
 		})
 		.factory('Photo', function ($resource) {
 			return $resource('/photo-data/:photoName', {}, {
-				query: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: true},
-				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: true}
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false} // 实际使用时可以替代默认值
+			});
+		}).factory('PhotoNavPre', function ($resource) {
+			return $resource('/photo/:photoName/pre', {}, {
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+			});
+		}).factory('PhotoNavNext', function ($resource) {
+			return $resource('/photo/:photoName/next', {}, {
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+			});
+		}).factory('AlbumPhotoNavPre', function ($resource) {
+			return $resource('/photo/:photoName/album/pre', {}, {
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+			});
+		}).factory('AlbumPhotoNavNext', function ($resource) {
+			return $resource('/photo/:photoName/album/next', {}, {
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
 			});
 		});
 });

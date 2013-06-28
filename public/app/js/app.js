@@ -43,6 +43,29 @@ define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], f
 						}
 					}
 				})
+				.state('albumPhoto', {
+					url: "/photo/:photoName/album",
+					views: {
+						"header": {
+							templateUrl: "/app/partials/header.html"
+						},
+						"content": {
+							templateUrl: "/app/partials/photo.html",
+							controller: 'albumPhoto'
+						},
+						"footer": {
+							templateUrl: "/app/partials/footer.html"
+						}
+					}
+				})
+				.state('albumPhoto.exif', {
+					url: "/exif",
+					views: {
+						"exif": {
+							templateUrl: "/app/partials/exif.html"
+						}
+					}
+				})
 			// configure html5 to get links working on jsfiddle
 			$locationProvider.html5Mode(true);
 		}]);

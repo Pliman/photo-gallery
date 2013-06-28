@@ -1,18 +1,41 @@
 'use strict';
 
 /* Controllers */
-define(['angular', './services'], function (angular) {
+define(['angular', 'angularUiRouter', './services'], function (angular) {
 	return angular.module('photo-gallery.controllers', ['photo-gallery.services']).
-		controller('index', ['$scope', 'Photos', function ($scope, Photos) {
-			Photos.get(function(photos){
+		controller('index', ['$scope', '$state', 'Photos', function ($scope, $state, Photos) {
+			Photos.get(function (photos) {
 				$scope.photos = photos;
 			});
 		}])
-		.controller('photo', ['$scope', '$stateParams', 'Photo', function ($scope, $stateParams, Photo) {
-			Photo.get({photoName: $stateParams.photoName}, function(photo) {
-				$scope.photo = photo[0];
+		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
+			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {
+			Photo.get({photoName: $stateParams.photoName}, function (photo) {
+				$scope.photo = photo;
 				$scope.photo.exposureCompensation += ' ev';
 			});
+
+			$scope.photoPre = function () {
+				if(!$scope.photo){
+					return;
+				}
+
+				PhotoNavPre.get({photoName: $stateParams.photoName}, function (photo) {
+					$scope.photo = photo;
+					$scope.photo.exposureCompensation += ' ev';
+				});
+			};
+
+			$scope.photoNext = function () {
+				if(!$scope.photo){
+					return;
+				}
+
+				PhotoNavNext.get({photoName: $stateParams.photoName}, function (photo) {
+					$scope.photo = photo;
+					$scope.photo.exposureCompensation += ' ev';
+				});
+			};
 
 			// 暂时不实现photo对象传递机制，动态去获取
 			$scope.exifItems = [
@@ -49,5 +72,70 @@ define(['angular', './services'], function (angular) {
 					property: 'createTime'
 				}
 			];
-		}]);
+		}])
+		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext',
+			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext) {
+				Photo.get({photoName: $stateParams.photoName}, function (photo) {
+					$scope.photo = photo;
+					$scope.photo.exposureCompensation += ' ev';
+				});
+
+				$scope.photoPre = function () {
+					if(!$scope.photo){
+						return;
+					}
+
+					AlbumPhotoNavPre.get({photoName: $stateParams.photoName}, function (photo) {
+						$scope.photo = photo;
+						$scope.photo.exposureCompensation += ' ev';
+					});
+				};
+
+				$scope.photoNext = function () {
+					if(!$scope.photo){
+						return;
+					}
+
+					AlbumPhotoNavNext.get({photoName: $stateParams.photoName}, function (photo) {
+						$scope.photo = photo;
+						$scope.photo.exposureCompensation += ' ev';
+					});
+				};
+
+				// 暂时不实现photo对象传递机制，动态去获取
+				$scope.exifItems = [
+					{
+						display: 'Album Name',
+						property: 'albumName'
+					},
+					{
+						display: 'Camera',
+						property: 'camera'
+					},
+					{
+						display: 'Model',
+						property: 'model'
+					},
+					{
+						display: 'Exposure',
+						property: 'exposure'
+					},
+					{
+						display: 'F',
+						property: 'f'
+					},
+					{
+						display: 'ISO',
+						property: 'ISO'
+					},
+					{
+						display: 'Exposure Compensation',
+						property: 'exposureCompensation'
+					},
+					{
+						display: 'Create Time',
+						property: 'createTime'
+					}
+				];
+			}]);
 });
