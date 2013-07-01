@@ -13,17 +13,21 @@
 
 6. 使用相片加载中状态...
 
-==>7. 实现浏览切换 a. 查看flickr，应该是使用照片条目反向查找顺序 b. count_id小于当前_id的记录数？:
+7. 实现浏览切换 a. 查看flickr，应该是使用照片条目反向查找顺序 b. count_id小于当前_id的记录数？:
 使用uploadTime 如果uploadTime一致，则按文件名自然排序(最好是能按照插入顺序): ！！！当前默认同一时刻只上传1张照片
-c. 切换图片的时候，使用状态转移
+c. 切换图片的时候，使用状态转移: 状态转移可以参数(state, parameter,
+isRefreshURL)，第二个参数可以给状态指定参数 ??向后就一步到底了??:
+service
+获取相片排序有无，导致获取到了后面的相片
+d. 第一张pre和最后一张next，一直loading，因为没有获取到图片:
 
 ==>8. 按Album过滤及浏览
 
 ==>9. 在列表页面点详情，应该不用重新获取数据
 
-==>10. $Resource的URL能否变动 -- 不然会写太对service...
+==>10. $Resource的URL能否变动 -- 不然会写太多service...
 
-==>11. 使用$scope.on() 和 transitions 来转换view
+11. 使用$scope.on() 和 transitions 来转换view
 
 0.0.1 2013-06-18
 1. 添加mongo，日志记录，路由等基础服务
