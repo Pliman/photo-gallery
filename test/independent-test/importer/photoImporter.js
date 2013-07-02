@@ -1,5 +1,5 @@
-var IMPORT_DIR = 'D:/photo-gallery/public/uploads/';
-var ALBUM_NAME = '银厂沟';
+var IMPORT_DIR = 'D:/nelo2/photo-gallery/public/uploads/';
+var ALBUM_NAME = 'Jiuzhaigou';
 
 //----------------------------------------------------------------
 
