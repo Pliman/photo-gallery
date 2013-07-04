@@ -9,7 +9,8 @@ define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], f
 					url: "/", // root route
 					views: {
 						"header": {
-							templateUrl: "/app/partials/header.html"
+							templateUrl: "/app/partials/header.html",
+							controller: 'header'
 						},
 						"content": {
 							templateUrl: "/app/partials/content.html",
@@ -20,11 +21,28 @@ define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], f
 						}
 					}
 				})
+				.state('album', {
+					url: "/album/:albumName", // root route
+					views: {
+						"header": {
+							templateUrl: "/app/partials/header.html",
+							controller: 'header'
+						},
+						"content": {
+							templateUrl: "/app/partials/content.html",
+							controller: 'album'
+						},
+						"footer": {
+							templateUrl: "/app/partials/footer.html"
+						}
+					}
+				})
 				.state('photo', {
 					url: "/photo/:photoName",
 					views: {
 						"header": {
-							templateUrl: "/app/partials/header.html"
+							templateUrl: "/app/partials/header.html",
+							controller: 'header'
 						},
 						"content": {
 							templateUrl: "/app/partials/photo.html",
@@ -47,7 +65,8 @@ define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], f
 					url: "/photo/:photoName/album",
 					views: {
 						"header": {
-							templateUrl: "/app/partials/header.html"
+							templateUrl: "/app/partials/header.html",
+							controller: 'header'
 						},
 						"content": {
 							templateUrl: "/app/partials/photo.html",

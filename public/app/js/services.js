@@ -9,6 +9,16 @@ define(['angular', 'angularResource'], function (angular) {
 	angular.module('photo-gallery.services', ['ngResource'])
 		.value('version', '0.1')
 		.value('photo', '0.1')
+		.factory('Albums', function ($resource) {
+			return $resource('/albums', {}, {
+				get: {method: 'GET', isArray: true}
+			});
+		})
+		.factory('AlbumPhotos', function ($resource) {
+			return $resource('/album/:albumName/photos', {}, {
+				get: {method: 'GET', params: {albumName: ''}, isArray: true}
+			});
+		})
 		.factory('Photos', function ($resource) {
 			return $resource('/photos', {}, {
 				get: {method: 'GET', isArray: true}

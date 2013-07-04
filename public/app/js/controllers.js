@@ -2,8 +2,8 @@
 
 /* Controllers */
 define(['angular', 'angularUiRouter', './services'], function (angular) {
-	return angular.module('photo-gallery.controllers', ['photo-gallery.services']).
-		controller('index', ['$scope', '$state', 'Photos', function ($scope, $state, Photos) {
+	return angular.module('photo-gallery.controllers', ['photo-gallery.services'])
+		.controller('index', ['$scope', '$state', 'Photos', function ($scope, $state, Photos) {
 			Photos.get(function (photos) {
 				$scope.photos = photos;
 			});
@@ -11,6 +11,24 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 			$scope.navPhoto = function(photoName){
 				$state.transitionTo('photo', {photoName: photoName});
 			};
+		}])
+		.controller('album', ['$scope', '$state', '$stateParams', 'AlbumPhotos', function ($scope, $state, $stateParams, AlbumPhotos) {
+			AlbumPhotos.get({albumName: $stateParams.albumName}, function (photos) {
+				$scope.photos = photos;
+			});
+
+			$scope.navPhoto = function(photoName){
+				$state.transitionTo('albumPhoto', {photoName: photoName});
+			};
+		}])
+		.controller('header', ['$scope', '$state', 'Albums', function ($scope, $state, Albums) {
+			if(!!$scope.albums){
+				return;
+			}
+
+			Albums.get(function (albums) {
+				$scope.albums = albums;
+			});
 		}])
 		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {
@@ -109,7 +127,7 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 
 						$scope.photo = photo;
 						$scope.photo.exposureCompensation += ' ev';
-						$state.transitionTo('photo', {photoName: photo.name});
+						$state.transitionTo('albumPhoto', {photoName: photo.name});
 					});
 				};
 
@@ -126,7 +144,7 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 
 						$scope.photo = photo;
 						$scope.photo.exposureCompensation += ' ev';
-						$state.transitionTo('photo', {photoName: photo.name});
+						$state.transitionTo('albumPhoto', {photoName: photo.name});
 					});
 				};
 

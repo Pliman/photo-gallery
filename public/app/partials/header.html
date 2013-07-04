@@ -3,8 +3,10 @@
 		<a class="brand" href="#">Photo Gallery</a>
 		<ul class="nav">
 			<li class="active"><a href="/">ALL</a></li>
-			<li><a href="/">Jiuzhaigou</a></li>
-			<li><a href="/">PulauLangTengah</a></li>
+
+			<li ng-repeat="album in albums">
+				<a href="#">{{album.name}}</a>
+			</li>
 		</ul>
 	</div>
 </div>
