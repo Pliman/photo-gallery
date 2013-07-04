@@ -1,5 +1,5 @@
 0.0.3
-==>1. 在列表页面点详情，应该不用重新获取数据
+==>1. 在列表页面点详情，应该不用重新获取数据 - 需要将主页中每个图片作为一个view
 
 ==>2. $Resource的URL能否变动 -- 不然会写太多service...
 
@@ -32,7 +32,7 @@ d. 第一张pre和最后一张next，一直loading，因为没有获取到图片
 
 8. 按Album过滤及浏览
 
-9. 获取所有album，首页过滤album照片
+9. 获取所有album，首页过滤album照片，点击header album可以改变相册
 
 10. 使用$scope.on() 和 transitions 来转换view
 

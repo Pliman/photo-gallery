@@ -29,6 +29,10 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 			Albums.get(function (albums) {
 				$scope.albums = albums;
 			});
+
+			$scope.navAlbum = function(albumName){
+				$state.transitionTo('album', {albumName: albumName});
+			};
 		}])
 		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {

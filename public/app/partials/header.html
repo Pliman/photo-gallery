@@ -5,7 +5,7 @@
 			<li class="active"><a href="/">ALL</a></li>
 
 			<li ng-repeat="album in albums">
-				<a href="#">{{album.name}}</a>
+				<a href="#" ng-click="navAlbum(album.name)">{{album.name}}</a>
 			</li>
 		</ul>
 	</div>
