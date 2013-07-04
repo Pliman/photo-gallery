@@ -4,6 +4,8 @@
 define(['angular', 'angularUiRouter', './services'], function (angular) {
 	return angular.module('photo-gallery.controllers', ['photo-gallery.services'])
 		.controller('index', ['$scope', '$state', 'Photos', function ($scope, $state, Photos) {
+			$scope.menu = 'all';
+
 			Photos.get(function (photos) {
 				$scope.photos = photos;
 			});
@@ -13,6 +15,8 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 			};
 		}])
 		.controller('album', ['$scope', '$state', '$stateParams', 'AlbumPhotos', function ($scope, $state, $stateParams, AlbumPhotos) {
+			$scope.menu = $stateParams.albumName;
+
 			AlbumPhotos.get({albumName: $stateParams.albumName}, function (photos) {
 				$scope.photos = photos;
 			});
@@ -36,6 +40,8 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 		}])
 		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {
+				$scope.menu = 'all';
+
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
@@ -114,6 +120,8 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
+					$scope.menu = photo.albumName;
+
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
 				});
