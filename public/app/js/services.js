@@ -9,6 +9,13 @@ define(['angular', 'angularResource'], function (angular) {
 	angular.module('photo-gallery.services', ['ngResource'])
 		.value('version', '0.1')
 		.value('photo', '0.1')
+		.factory('menu', function($rootScope){
+			return {
+				changeMenu: function(album){
+					$rootScope.$broadcast('albumChanged', album);
+				}
+			}
+		})
 		.factory('Albums', function ($resource) {
 			return $resource('/albums', {}, {
 				get: {method: 'GET', isArray: true}

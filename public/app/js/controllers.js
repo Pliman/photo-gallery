@@ -1,11 +1,9 @@
 'use strict';
 
 /* Controllers */
-define(['angular', 'angularUiRouter', './services'], function (angular) {
+define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angular) {
 	return angular.module('photo-gallery.controllers', ['photo-gallery.services'])
 		.controller('index', ['$scope', '$state', 'Photos', function ($scope, $state, Photos) {
-			$scope.menu = 'all';
-
 			Photos.get(function (photos) {
 				$scope.photos = photos;
 			});
@@ -14,8 +12,8 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 				$state.transitionTo('photo', {photoName: photoName});
 			};
 		}])
-		.controller('album', ['$scope', '$state', '$stateParams', 'AlbumPhotos', function ($scope, $state, $stateParams, AlbumPhotos) {
-			$scope.menu = $stateParams.albumName;
+		.controller('album', ['$scope', '$state', '$stateParams', 'AlbumPhotos', 'menu', function ($scope, $state, $stateParams, AlbumPhotos, menu) {
+			menu.changeMenu($stateParams.albumName);
 
 			AlbumPhotos.get({albumName: $stateParams.albumName}, function (photos) {
 				$scope.photos = photos;
@@ -32,6 +30,12 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 
 			Albums.get(function (albums) {
 				$scope.albums = albums;
+
+				console.log(111);
+				$scope.$on('albumChanged', function(event, albumName){
+					$('.albums').removeClass('active');
+					$('#' + albumName).addClass('active');
+				});
 			});
 
 			$scope.navAlbum = function(albumName){
@@ -40,8 +44,6 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 		}])
 		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {
-				$scope.menu = 'all';
-
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
@@ -120,8 +122,6 @@ define(['angular', 'angularUiRouter', './services'], function (angular) {
 		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
-					$scope.menu = photo.albumName;
-
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
 				});
