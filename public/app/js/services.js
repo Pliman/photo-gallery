@@ -9,14 +9,16 @@ define(['angular', 'angularResource'], function (angular) {
 	angular.module('photo-gallery.services', ['ngResource'])
 		.value('version', '0.1')
 		.value('photo', '0.1')
-		.factory('menu', function($rootScope){
+		.factory('menu', function ($rootScope) {
 			return {
-				changeMenu: function(album){
+				changeMenu: function (album) {
 					$rootScope.$broadcast('albumChanged', album);
 				}
 			}
 		})
-		.factory('Albums', function ($resource) {
+		.factory('Albums', function ($resource, $rootScope) {
+			$rootScope.albums = null;
+
 			return $resource('/albums', {}, {
 				get: {method: 'GET', isArray: true}
 			});
@@ -31,19 +33,19 @@ define(['angular', 'angularResource'], function (angular) {
 				get: {method: 'GET', isArray: true}
 			});
 		})
-		.factory('Photo', function ($resource) {
+		.factory('Photo',function ($resource) {
 			return $resource('/photo-data/:photoName', {}, {
 				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false} // 实际使用时可以替代默认值
 			});
-		}).factory('PhotoNavPre', function ($resource) {
+		}).factory('PhotoNavPre',function ($resource) {
 			return $resource('/photo/:photoName/pre', {}, {
 				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
 			});
-		}).factory('PhotoNavNext', function ($resource) {
+		}).factory('PhotoNavNext',function ($resource) {
 			return $resource('/photo/:photoName/next', {}, {
 				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
 			});
-		}).factory('AlbumPhotoNavPre', function ($resource) {
+		}).factory('AlbumPhotoNavPre',function ($resource) {
 			return $resource('/photo/:photoName/album/pre', {}, {
 				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
 			});

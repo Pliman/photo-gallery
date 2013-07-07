@@ -8,7 +8,7 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 				$scope.photos = photos;
 			});
 
-			$scope.navPhoto = function(photoName){
+			$scope.navPhoto = function (photoName) {
 				$state.transitionTo('photo', {photoName: photoName});
 			};
 		}])
@@ -19,28 +19,33 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 				$scope.photos = photos;
 			});
 
-			$scope.navPhoto = function(photoName){
+			$scope.navPhoto = function (photoName) {
 				$state.transitionTo('albumPhoto', {photoName: photoName});
 			};
 		}])
-		.controller('header', ['$scope', '$state', 'Albums', function ($scope, $state, Albums) {
-			if(!!$scope.albums){
+		.controller('header', ['$rootScope', '$scope', '$state', 'Albums', function ($rootScope, $scope, $state, Albums) {
+			$scope.navAlbum = function (albumName) {
+				$state.transitionTo('album', {albumName: albumName});
+			};
+
+			$('.albums').removeClass('active');
+
+			$scope.$on('albumChanged', function (event, albumName) {
+				// 解决方法 1.加载了album就不动了，直接改变样式 2.提前设定值，加载时如果发现和自己相同，就设置为active
+				$scope.currentAlbum = albumName;
+				//$('.albums').removeClass('active');
+				//$('#' + albumName).addClass('active');
+			});
+
+			if (!!$rootScope.albums) {
 				return;
 			}
 
 			Albums.get(function (albums) {
 				$scope.albums = albums;
 
-				console.log(111);
-				$scope.$on('albumChanged', function(event, albumName){
-					$('.albums').removeClass('active');
-					$('#' + albumName).addClass('active');
-				});
+				$rootScope.albums = albums;
 			});
-
-			$scope.navAlbum = function(albumName){
-				$state.transitionTo('album', {albumName: albumName});
-			};
 		}])
 		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
 			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {
