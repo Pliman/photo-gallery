@@ -28,13 +28,15 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 				$state.transitionTo('album', {albumName: albumName});
 			};
 
-			$('.albums').removeClass('active');
-
 			$scope.$on('albumChanged', function (event, albumName) {
-				// 解决方法 1.加载了album就不动了，直接改变样式 2.提前设定值，加载时如果发现和自己相同，就设置为active
-				$scope.currentAlbum = albumName;
-				//$('.albums').removeClass('active');
-				//$('#' + albumName).addClass('active');
+				$rootScope.currentAlbum = albumName;
+			});
+
+			$scope.$on('$viewContentLoaded', function () {
+				if ($scope.currentAlbum) {
+					$('.albums').removeClass('active');
+					$('#' + $scope.currentAlbum).addClass('active');
+				}
 			});
 
 			if (!!$rootScope.albums) {
@@ -42,8 +44,6 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 			}
 
 			Albums.get(function (albums) {
-				$scope.albums = albums;
-
 				$rootScope.albums = albums;
 			});
 		}])
