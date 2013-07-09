@@ -3,9 +3,10 @@
 	<div id="pre" class="pre" ng-click="photoPre()"></div>
 	<div id="next" class="next" ng-click="photoNext()"></div>
 	<span class="shower" ng-switch="photo.name != null">
-		<img ng-switch-when="true" ng-src="/uploads/{{photo.name}}">
+		<img ng-switch-when="true"
+		     ng-src="/uploads/{{photo.albumName}}/{{photo.name}}">
 		<!-- show spinner when loading-->
-		<img ng-switch-when="false" src="/uploads/loding_green.gif">
+		<img ng-switch-when="false" src="/app/img/loding_green.gif">
 	</span>
 </div>
 
