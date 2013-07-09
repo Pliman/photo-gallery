@@ -1,3 +1,18 @@
+/*-----------------global start-----------------*/
+body {
+	font-family: "georgia","Lato", sans-serif;
+	font-size: 15px;
+}
+
+.navbar .nav > li > a {
+	font-size: 17px;
+}
+/*-----------------global end-----------------*/
+/*-----------------header start-----------------*/
+.siteTitle {
+	text-decoration: none;
+}
+/*-----------------header end-----------------*/
 /*-----------------photoviewer start-----------------*/
 .photoviewer {
 	position: relative;
@@ -18,5 +33,8 @@
 	position: absolute;
 	cursor:url('../img/arrow-blue-right.png'), pointer;
 	left: 50%;
+}
+.exifInfo {
+	color: #27AE60;
 }
 /*-----------------photoviewer end-----------------*/
