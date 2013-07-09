@@ -2,12 +2,13 @@
 	<div class="navbar-inner">
 		<a class="brand" href="/">Photo Gallery</a>
 		<ul class="nav">
-			<li class="active albums"><a
+			<li ng-class="{active: currentAlbum == 'all'}"><a
 					href="/">ALL</a></li>
 
-			<li class="albums" ng-repeat="album in albums"
+			<li ng-repeat="album in albums" ng-class="{active: currentAlbum == album.name}"
 			    id="{{album.name}}">
-				<a href="#" ng-click="navAlbum(album.name)">{{album
+				<a href="#" ng-click="navAlbum(album.name)"
+				   title="{{currentAlbum}}">{{album
 					.name}}</a>
 			</li>
 		</ul>

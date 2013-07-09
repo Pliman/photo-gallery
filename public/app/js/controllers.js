@@ -28,15 +28,9 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 				$state.transitionTo('album', {albumName: albumName});
 			};
 
+			$rootScope.currentAlbum = 'all';
 			$scope.$on('albumChanged', function (event, albumName) {
 				$rootScope.currentAlbum = albumName;
-			});
-
-			$scope.$on('$viewContentLoaded', function () {
-				if ($scope.currentAlbum) {
-					$('.albums').removeClass('active');
-					$('#' + $scope.currentAlbum).addClass('active');
-				}
 			});
 
 			if (!!$rootScope.albums) {
@@ -124,11 +118,13 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 					}
 				];
 			}])
-		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext',
-			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext) {
+		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext', 'menu',
+			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext, menu) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
+
+					menu.changeMenu($scope.photo.albumName);
 				});
 
 				$scope.photoPre = function () {
