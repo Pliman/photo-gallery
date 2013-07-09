@@ -6,7 +6,8 @@ var require = {
 		jQuery: 'lib/jquery/jquery-1.10.1',
 		bootstrap: 'lib/bootstrap/bootstrap',
 		angularUiRouter: 'lib/angular/angular-ui-router',
-		underscore: 'lib/underscore/underscore'
+		underscore: 'lib/underscore/underscore',
+		popMsger: 'js/widgets/pop-msger'
 	},
 	shim: {
 		bootstrap: {
@@ -26,6 +27,9 @@ var require = {
 		},
 		angularResource: {
 			deps: ['angular']
+		},
+		popMsger: {
+			deps: ['jQuery', 'bootstrap']
 		}
 	}
 };

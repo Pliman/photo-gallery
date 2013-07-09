@@ -1,6 +1,7 @@
+<div id="msger"></div>
 <div class="photoviewer">
-	<div class="pre" ng-click="photoPre()"></div>
-	<div class="next" ng-click="photoNext()"></div>
+	<div id="pre" class="pre" ng-click="photoPre()"></div>
+	<div id="next" class="next" ng-click="photoNext()"></div>
 	<span class="shower" ng-switch="photo.name != null">
 		<img ng-switch-when="true" ng-src="/uploads/{{photo.name}}">
 		<!-- show spinner when loading-->
@@ -21,4 +22,3 @@
 		</ul>
 	</div>
 </div>
-

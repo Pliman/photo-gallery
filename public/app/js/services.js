@@ -39,19 +39,52 @@ define(['angular', 'angularResource'], function (angular) {
 			});
 		}).factory('PhotoNavPre',function ($resource) {
 			return $resource('/photo/:photoName/pre', {}, {
-				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: true}
 			});
 		}).factory('PhotoNavNext',function ($resource) {
 			return $resource('/photo/:photoName/next', {}, {
-				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: true}
 			});
 		}).factory('AlbumPhotoNavPre',function ($resource) {
 			return $resource('/photo/:photoName/album/pre', {}, {
-				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: true}
 			});
-		}).factory('AlbumPhotoNavNext', function ($resource) {
+		}).factory('AlbumPhotoNavNext',function ($resource) {
 			return $resource('/photo/:photoName/album/next', {}, {
-				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: false}
+				get: {method: 'GET', params: {photoName: 'P1130053.jpg'}, isArray: true}
 			});
-		});
+		}).value('exifItems', [
+			{
+				display: 'Album Name',
+				property: 'albumName'
+			},
+			{
+				display: 'Camera',
+				property: 'camera'
+			},
+			{
+				display: 'Model',
+				property: 'model'
+			},
+			{
+				display: 'Exposure',
+				property: 'exposure'
+			},
+			{
+				display: 'F',
+				property: 'f'
+			},
+			{
+				display: 'ISO',
+				property: 'ISO'
+			},
+			{
+				display: 'Exposure Compensation',
+				property: 'exposureCompensation'
+			},
+			{
+				display: 'Create Time',
+				property: 'createTime'
+			}
+		]);
 });

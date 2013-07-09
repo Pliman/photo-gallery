@@ -1,7 +1,7 @@
 'use strict';
 
 /* Controllers */
-define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angular) {
+define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], function ($, angular, popMsger) {
 	return angular.module('photo-gallery.controllers', ['photo-gallery.services'])
 		.controller('index', ['$scope', '$state', 'Photos', function ($scope, $state, Photos) {
 			Photos.get(function (photos) {
@@ -41,11 +41,38 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 				$rootScope.albums = albums;
 			});
 		}])
-		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext',
-			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext) {
+		.controller('photo', ['$scope', '$state', '$stateParams', 'Photo', 'PhotoNavPre', 'PhotoNavNext', 'exifItems',
+			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext, exifItems) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
+
+					$scope.pre = true;
+					$scope.next = true;
+
+					PhotoNavPre.get({photoName: $stateParams.photoName}, function (photo) {
+						if (photo.length === 0) {
+							$scope.pre = false;
+
+							$('#pre').removeClass('pre');
+							$('#pre').addClass('no-pre');
+						} else {
+							$('#pre').removeClass('no-pre');
+							$('#pre').addClass('pre');
+						}
+					});
+
+					PhotoNavNext.get({photoName: $stateParams.photoName}, function (photo) {
+						if (photo.length === 0) {
+							$scope.next = false;
+
+							$('#next').removeClass('next');
+							$('#next').addClass('no-next');
+						} else {
+							$('#next').removeClass('no-next');
+							$('#next').addClass('next');
+						}
+					});
 				});
 
 				$scope.photoPre = function () {
@@ -53,15 +80,32 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 						return;
 					}
 
+					if (!$scope.pre) {
+						popMsger.setupPopMsger(new popMsger("已经是第一张了", "success", 5000), $('#msger'),
+							"photoNavFirst");
+
+						return;
+					}
+
 					PhotoNavPre.get({photoName: $stateParams.photoName}, function (photo) {
-						if (!photo.name) {
-							alert("已经是第一张了");
-							return;
+						$scope.pre = true;
+						$scope.next = true;
+
+						if (photo.length === 1) {
+							$scope.pre = false;
+
+							$('#pre').removeClass('pre');
+							$('#pre').addClass('no-pre');
 						}
 
-						$scope.photo = photo;
+						if (photo.length === 2) {
+							$('#pre').removeClass('no-pre');
+							$('#pre').addClass('pre');
+						}
+
+						$scope.photo = photo[0];
 						$scope.photo.exposureCompensation += ' ev';
-						$state.transitionTo('photo', {photoName: photo.name});
+						$state.transitionTo('photo', {photoName: $scope.photo.name});
 					});
 				};
 
@@ -70,59 +114,69 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 						return;
 					}
 
+					if (!$scope.next) {
+						popMsger.setupPopMsger(new popMsger("已经是最后一张了", "success", 5000), $('#msger'),
+							"photoNavLast");
+
+						return;
+					}
+
 					PhotoNavNext.get({photoName: $stateParams.photoName}, function (photo) {
-						if (!photo.name) {
-							alert("已经是最后一张了");
-							return;
+						$scope.pre = true;
+						$scope.next = true;
+
+						if (photo.length === 1) {
+							$scope.next = false;
+
+							$('#next').removeClass('next');
+							$('#next').addClass('no-next');
 						}
 
-						$scope.photo = photo;
+						if (photo.length === 2) {
+							$('#next').removeClass('no-next');
+							$('#next').addClass('next');
+						}
+
+						$scope.photo = photo[0];
 						$scope.photo.exposureCompensation += ' ev';
-						$state.transitionTo('photo', {photoName: photo.name});
+						$state.transitionTo('photo', {photoName: $scope.photo.name});
 					});
 				};
 
-				// 暂时不实现photo对象传递机制，动态去获取
-				$scope.exifItems = [
-					{
-						display: 'Album Name',
-						property: 'albumName'
-					},
-					{
-						display: 'Camera',
-						property: 'camera'
-					},
-					{
-						display: 'Model',
-						property: 'model'
-					},
-					{
-						display: 'Exposure',
-						property: 'exposure'
-					},
-					{
-						display: 'F',
-						property: 'f'
-					},
-					{
-						display: 'ISO',
-						property: 'ISO'
-					},
-					{
-						display: 'Exposure Compensation',
-						property: 'exposureCompensation'
-					},
-					{
-						display: 'Create Time',
-						property: 'createTime'
-					}
-				];
+				$scope.exifItems = exifItems;
 			}])
-		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext', 'menu',
-			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext, menu) {
+		.controller('albumPhoto', ['$scope', '$state', '$stateParams', 'Photo', 'AlbumPhotoNavPre', 'AlbumPhotoNavNext', 'menu', 'exifItems',
+			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext, menu, exifItems) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
 					$scope.photo.exposureCompensation += ' ev';
+
+					$scope.pre = true;
+					$scope.next = true;
+
+					AlbumPhotoNavPre.get({photoName: $stateParams.photoName}, function (photo) {
+						if (photo.length === 0) {
+							$scope.pre = false;
+
+							$('#pre').removeClass('pre');
+							$('#pre').addClass('no-pre');
+						} else {
+							$('#pre').removeClass('no-pre');
+							$('#pre').addClass('pre');
+						}
+					});
+
+					AlbumPhotoNavNext.get({photoName: $stateParams.photoName}, function (photo) {
+						if (photo.length === 0) {
+							$scope.next = false;
+
+							$('#next').removeClass('next');
+							$('#next').addClass('no-next');
+						} else {
+							$('#next').removeClass('no-next');
+							$('#next').addClass('next');
+						}
+					});
 
 					menu.changeMenu($scope.photo.albumName);
 				});
@@ -132,15 +186,32 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 						return;
 					}
 
+					if (!$scope.pre) {
+						popMsger.setupPopMsger(new popMsger("已经是第一张了", "success", 5000), $('#msger'),
+							"albumPhotoNavFirst");
+
+						return;
+					}
+
 					AlbumPhotoNavPre.get({photoName: $stateParams.photoName}, function (photo) {
-						if (!photo.name) {
-							alert("已经是第一张了");
-							return;
+						$scope.pre = true;
+						$scope.next = true;
+
+						if (photo.length === 1) {
+							$scope.pre = false;
+
+							$('#pre').removeClass('pre');
+							$('#pre').addClass('no-pre');
 						}
 
-						$scope.photo = photo;
+						if (photo.length === 2) {
+							$('#pre').removeClass('no-pre');
+							$('#pre').addClass('pre');
+						}
+
+						$scope.photo = photo[0];
 						$scope.photo.exposureCompensation += ' ev';
-						$state.transitionTo('albumPhoto', {photoName: photo.name});
+						$state.transitionTo('albumPhoto', {photoName: $scope.photo.name});
 					});
 				};
 
@@ -149,52 +220,35 @@ define(['jQuery', 'angular', 'angularUiRouter', './services'], function ($, angu
 						return;
 					}
 
+					if (!$scope.next) {
+						popMsger.setupPopMsger(new popMsger("已经是最后一张了", "success", 5000), $('#msger'),
+							"albumPhotoNavLast");
+
+						return;
+					}
+
 					AlbumPhotoNavNext.get({photoName: $stateParams.photoName}, function (photo) {
-						if (!photo.name) {
-							alert("已经是最后一张了");
-							return;
+						$scope.pre = true;
+						$scope.next = true;
+
+						if (photo.length === 1) {
+							$scope.next = false;
+
+							$('#next').removeClass('next');
+							$('#next').addClass('no-next');
 						}
 
-						$scope.photo = photo;
+						if (photo.length === 2) {
+							$('#next').removeClass('no-next');
+							$('#next').addClass('next');
+						}
+
+						$scope.photo = photo[0];
 						$scope.photo.exposureCompensation += ' ev';
-						$state.transitionTo('albumPhoto', {photoName: photo.name});
+						$state.transitionTo('albumPhoto', {photoName: $scope.photo.name});
 					});
 				};
 
-				// 暂时不实现photo对象传递机制，动态去获取
-				$scope.exifItems = [
-					{
-						display: 'Album Name',
-						property: 'albumName'
-					},
-					{
-						display: 'Camera',
-						property: 'camera'
-					},
-					{
-						display: 'Model',
-						property: 'model'
-					},
-					{
-						display: 'Exposure',
-						property: 'exposure'
-					},
-					{
-						display: 'F',
-						property: 'f'
-					},
-					{
-						display: 'ISO',
-						property: 'ISO'
-					},
-					{
-						display: 'Exposure Compensation',
-						property: 'exposureCompensation'
-					},
-					{
-						display: 'Create Time',
-						property: 'createTime'
-					}
-				];
+				$scope.exifItems = exifItems;
 			}]);
 });
