@@ -45,7 +45,7 @@ define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], funct
 			function ($scope, $state, $stateParams, Photo, PhotoNavPre, PhotoNavNext, exifItems) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
-					$scope.photo.exposureCompensation += ' ev';
+					$scope.photo.exposureCompensation = ($scope.photo.exposureCompensation || '') + ' ev';
 
 					$scope.pre = true;
 					$scope.next = true;
@@ -104,7 +104,7 @@ define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], funct
 						}
 
 						$scope.photo = photo[0];
-						$scope.photo.exposureCompensation += ' ev';
+						$scope.photo.exposureCompensation = ($scope.photo.exposureCompensation || '') + ' ev';
 						$state.transitionTo('photo', {photoName: $scope.photo.name});
 					});
 				};
@@ -138,7 +138,7 @@ define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], funct
 						}
 
 						$scope.photo = photo[0];
-						$scope.photo.exposureCompensation += ' ev';
+						$scope.photo.exposureCompensation = ($scope.photo.exposureCompensation || '') + ' ev';
 						$state.transitionTo('photo', {photoName: $scope.photo.name});
 					});
 				};
@@ -149,7 +149,7 @@ define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], funct
 			function ($scope, $state, $stateParams, Photo, AlbumPhotoNavPre, AlbumPhotoNavNext, menu, exifItems) {
 				Photo.get({photoName: $stateParams.photoName}, function (photo) {
 					$scope.photo = photo;
-					$scope.photo.exposureCompensation += ' ev';
+					$scope.photo.exposureCompensation = ($scope.photo.exposureCompensation || '') + ' ev';
 
 					$scope.pre = true;
 					$scope.next = true;
@@ -210,7 +210,7 @@ define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], funct
 						}
 
 						$scope.photo = photo[0];
-						$scope.photo.exposureCompensation += ' ev';
+						$scope.photo.exposureCompensation = ($scope.photo.exposureCompensation || '') + ' ev';
 						$state.transitionTo('albumPhoto', {photoName: $scope.photo.name});
 					});
 				};
@@ -244,7 +244,7 @@ define(['jQuery', 'angular', 'popMsger', 'angularUiRouter', './services'], funct
 						}
 
 						$scope.photo = photo[0];
-						$scope.photo.exposureCompensation += ' ev';
+						$scope.photo.exposureCompensation = ($scope.photo.exposureCompensation || '') + ' ev';
 						$state.transitionTo('albumPhoto', {photoName: $scope.photo.name});
 					});
 				};
