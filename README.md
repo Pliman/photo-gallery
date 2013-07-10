@@ -20,7 +20,7 @@ Installation:
 
 	1. clone / download photo-gallery
 	2. import test data from data/albums.dat data/photos.dat into mongodb
-	3. modify conf.js for port, log and mongodb configuration
+	3. modify conf.js for log and mongodb configuration
 	4. run app.js, enjoy your personal album
 
 ###1. Album&photo batch importing:
