@@ -2,8 +2,11 @@ photo-gallery
 =============
 
 photo-gallery is a personal  album, implemented with nodeJS, requireJS and angularJS, Currently, it only contains simple functionalities, including:
+
 1. album&photo batch importing.
+
 2. view all photos or by albums.
+
 3. view photo one by one both in or out of a album.
 
 Environment requirements:
@@ -26,7 +29,8 @@ Folder `uploads` is the place which albums and photos should be placed.
 
 Add albums and photos:
 
-	1. Create an folder just under 'unloads'(doesn't support subfolder under album), if you want add new photos into existing albums, just skip to step 2.
+	1. Create an folder just under 'unloads'(doesn't support subfolder under album), if
+	you want add new photos into existing albums, just skip to step 2.
 	2. Place new photo into this album.
 	3. config IMPORT_DIR in photoImporter.js, and use node to execute photoImporter.js.
 
