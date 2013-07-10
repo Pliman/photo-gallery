@@ -1,4 +1,4 @@
-var IMPORT_DIR = 'D:/nelo2/photo-gallery/public/uploads/';
+var IMPORT_DIR = 'D:/photo-gallery/public/uploads/';
 //----------------------------------------------------------------
 
 var fs = require("fs");
