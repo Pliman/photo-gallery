@@ -15,6 +15,10 @@ NodeJS
 
 Mongodb
 
+Demo:
+-------------------------
+<a href="https://photogallery-pliman.rhcloud.com">https://photogallery-pliman.rhcloud.com</a>
+
 Installation:
 -------------------------
 
