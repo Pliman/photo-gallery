@@ -9,15 +9,15 @@ photo-gallery is a personal  album, implemented with nodeJS, requireJS and angul
 
 3. view photo one by one both in or out of a album.
 
+Demo:
+-------------------------
+<a href="https://photogallery-pliman.rhcloud.com">https://photogallery-pliman.rhcloud.com</a>
+
 Environment requirements:
 -------------------------
 NodeJS
 
 Mongodb
-
-Demo:
--------------------------
-<a href="https://photogallery-pliman.rhcloud.com">https://photogallery-pliman.rhcloud.com</a>
 
 Installation:
 -------------------------
