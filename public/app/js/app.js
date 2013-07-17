@@ -1,6 +1,6 @@
 'use strict';
 
-define(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', './controllers'], function ($, angular) {
+require(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', 'js/controllers'], function ($, angular) {
 	// Declare app level module which depends on filters, and services
 	angular.module('photo-gallery', ['ui.state', 'photo-gallery.controllers']).
 		config(['$routeProvider', '$locationProvider', '$stateProvider', function ($routeProvider, $locationProvider, $stateProvider) {
