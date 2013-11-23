@@ -4,7 +4,7 @@ module.exports = {
 			"appenders": [
 				{
 					"type": "file",
-					"filename": "/log/photo-gallery/app.log",
+					"filename": "app.log",
 					"maxLogSize": 10000000,
 					"backups": 10
 				}
@@ -13,8 +13,10 @@ module.exports = {
 	},
 	"mongoDB": {
 		//"host": "192.168.1.108",
-		"host": "10.34.135.159",
+		"host": "localhost",
 		"port": "27017",
+		"userName": "photo-gallery",
+		"password": "photo-gallery",
 		"dbName": "photo-gallery",
 		"max_connection": "10",
 		// development or production
