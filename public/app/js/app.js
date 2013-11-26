@@ -51,10 +51,12 @@ require(['jQuery', 'angular', 'bootstrap', 'angularUiRouter', 'js/controllers'],
 						"footer": {
 							templateUrl: "/app/partials/footer.html"
 						}
-					}
+					},
+					abstract: true
 				})
 				.state('photo.exif', {
-					url: "/exif",
+					//url: "/exif",
+					url: "",
 					views: {
 						"exif": {
 							templateUrl: "/app/partials/exif.html"
